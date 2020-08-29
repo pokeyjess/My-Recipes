@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Recipes</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <!--<h1>{{ categories }}</h1>-->
+    <div class="card">
+      <h1 class="title">My Favorite Recipes</h1>
+      <ul>
+        {% for category in categories %}
+        <li>
+          <a class="bar" href="/category/{{ category.id }}/"
+            >{{ category.name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="title">
+      {% if request.user.is_staff %}
+      <div class="title">
+        <button>
+          <a class="bar" href="/newrecipe/">Add a new recipe</a>
+        </button>
+      </br>
+    </br>
+        <button>
+          <a class="bar" href="/logout/">Log Out</a>
+        </button>
+      </div>
+      {% elif request.user.is_authenticated %}
+      <button>
+        <a class="bar" href="/logout/">Log Out</a>
+      </button>
+      {% else %}
+      <div class="title">
+        <button>
+          <a class="bar" href="/login/">Log In</a>
+        </button>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Recipes</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <!--<h1>{{ categories }}</h1>-->
+
+    <div class="card">
+      <div class="title">
+        <h1>{{ category.name }}</h1>
+      </div>
+      <div>
+        <i class="summary"> {{ category.description }}</i>
+      </div>
+      <ul>
+        {% for recipe in recipes %}
+        <li>
+          <a class="bar" href="/recipe/{{ recipe.id }}/">{{ recipe.title }} </a>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="button">
+        <a href="/"><i class="link">Back to Home</i></a>
+      </div>
+    </div>
+  </body>
+</html>

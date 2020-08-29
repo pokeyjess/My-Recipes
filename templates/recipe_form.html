@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a recipe</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="card">
+      <h1 class="title">Submit a new recipe:</h1>
+      <div class="button">
+        <a href="/"><i class="link">Back to Home</i></a>
+      </div>
+      <form action="/newrecipe/" method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" value="Submit!" />
+      </form>
+    </div>
+    <div class="title">
+      <button>
+        <a class="bar" href="/newcategory/"
+          >Don't see the category you want? Add a new one!</a
+        >
+      </button>
+    </div>
+  </body>
+</html>

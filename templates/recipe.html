@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ recipe.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="card">
+      <div class="header">
+        <div class="button">
+          <a href="/"><i class="link">Back to Home</i></a>
+        </div>
+      </div>
+      <div>
+        <h1 class="title">
+          {{ recipe.title }}
+        </h1>
+        <i class="summary"> {{ recipe.summary }}</i>
+        <p class="info">{{ recipe.instructions }}</p>
+      </div>
+      <a class="bar" href="/category/{{ recipe.category.id }}"
+        >Back to: {{ recipe.category.name }}</a
+      >
+    </div>
+
+    {% if request.user.is_staff %}
+    <div class="title">
+      <button>
+        <a class="bar" href="edit/">Edit recipe</a>
+      </button>
+    </div>
+    {% endif %}
+  </body>
+</html>

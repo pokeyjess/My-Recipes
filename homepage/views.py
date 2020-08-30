@@ -65,16 +65,20 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("homepage"))
 
+@login_required
 def signup_view(request):
-    if request.method == "POST":
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            new_user = User.objects.create_user(username=data.get("username"), password=data.get("password"))
-            login(request, new_user)
-            return HttpResponseRedirect(reverse("homepage"))
-    form = SignUpForm()
-    return render(request, "generic_form.html", {"form": form})
+    if request.user.is_staff:
+        if request.method == "POST":
+            form = SignUpForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                new_user = User.objects.create_user(username=data.get("username"), password=data.get("password"))
+                login(request, new_user)
+                return HttpResponseRedirect(reverse("homepage"))
+        form = SignUpForm()
+        return render(request, "generic_form.html", {"form": form})
+    else:
+        return HttpResponseForbidden("You must have admin privileges to access this page")
 
 @login_required
 def recipe_edit(request, id):

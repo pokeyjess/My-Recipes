@@ -100,3 +100,12 @@ def remove_recipe(request, id):
         return redirect('homepage')
     else:
         return HttpResponseForbidden("You must have admin privileges to access this page")
+
+@login_required
+def remove_category(request, id):
+    if request.user.is_staff:
+        category = get_object_or_404(Category, id=id)
+        category.delete()
+        return redirect('homepage')
+    else:
+        return HttpResponseForbidden("You must have admin privileges to access this page")

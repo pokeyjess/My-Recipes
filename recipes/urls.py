@@ -12,6 +12,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name="logoutview"),
     path('signup/', views.signup_view, name="signupview"),
     path('recipe/<int:id>/edit/', views.recipe_edit, name='recipe_edit'),
-    path('recipe/<int:id>/remove/', views.remove_recipe, name='remove'),
+    path('recipe/<int:id>/remove/', views.remove_recipe, name='remove_recipe'),
+    path('category/<int:id>/remove/', views.remove_category, name='remove_category'),
     path('admin/', admin.site.urls),
 ]

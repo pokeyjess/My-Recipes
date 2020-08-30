@@ -92,3 +92,11 @@ def recipe_edit(request, id):
     else:
         return HttpResponseForbidden("You must have admin privileges to access this page")
     
+@login_required
+def remove_recipe(request, id):
+    if request.user.is_staff:
+        recipe = get_object_or_404(Recipe, id=id)
+        recipe.delete()
+        return redirect('homepage')
+    else:
+        return HttpResponseForbidden("You must have admin privileges to access this page")

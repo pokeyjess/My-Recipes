@@ -32,6 +32,16 @@
         <a class="bar" href="edit/">Edit recipe</a>
       </button>
     </div>
+    <div class="title">
+      <button>
+        <a
+          class="bar"
+          href="remove/"
+          onclick="return confirm('Are you sure you want to delete this recipe?')"
+          >Delete recipe</a
+        >
+      </button>
+    </div>
     {% endif %}
   </body>
 </html>

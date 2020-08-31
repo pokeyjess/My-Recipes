@@ -25,10 +25,10 @@ def recipe(request, recipe_id):
 def recipe_form_view(request):
     if request.user.is_staff:
         if request.method == "POST":
-            form = RecipeForm(request.POST)
+            form = RecipeForm(request.POST, request.FILES)
             if form.is_valid():
                 data = form.cleaned_data
-                Recipe.objects.create(title=data.get('title'), category=data.get('category'), summary=data.get('summary'), instructions=data.get('instructions'))
+                Recipe.objects.create(title=data.get('title'), category=data.get('category'), summary=data.get('summary'), instructions=data.get('instructions'), recipe_image=data.get('recipe_image'))
                 return HttpResponseRedirect(reverse("homepage"))
         form = RecipeForm()
         return render(request, "recipe_form.html", {"form": form})
@@ -84,7 +84,7 @@ def recipe_edit(request, id):
     if request.user.is_staff:
         edit = get_object_or_404(Recipe, id=id)
         if request.method == "POST":
-            form = RecipeForm(request.POST, instance=edit)
+            form = RecipeForm(request.POST, request.FILES, instance=edit)
             if form.is_valid():
                 edit = form.save(commit=False)
                 edit.save()

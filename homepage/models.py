@@ -14,8 +14,12 @@ class Recipe(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     summary = models.TextField()
     instructions = models.TextField()
+    recipe_image = models.ImageField(upload_to='images/', null=True, blank=True)
     class Meta:
         ordering = ('title',)
+    
+    # def upload_image(self, filename):
+        # return 'recipe/{}/{}'.format(self.title, filename)
 
     def __str__(self):
         return f"{self.title} : {self.category.name}"

@@ -21,7 +21,7 @@ body {
   box-shadow: 0px 0px 50px 5px black;
 }
 .header {
-  /*background: -- dynamically change to photo for recipe;*/
+  /* background: url("{{ recipe.image.url }}"); */
   background-size: cover;
   min-height: 200px;
 }

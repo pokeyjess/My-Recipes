@@ -48,3 +48,6 @@ ENV/
 
 # database
 *.sqlite3
+
+# secret key
+secret_key.py

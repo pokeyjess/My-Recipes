@@ -28,7 +28,6 @@
     </div>
     <div class="card">
       <h1 class="title">Submit or edit category:</h1>
-
       <form action="/newcategory/" method="post">
         {% csrf_token %} {{ form.as_p }}
         <input type="submit" value="Submit!" />

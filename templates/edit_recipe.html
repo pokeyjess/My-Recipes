@@ -21,11 +21,7 @@
       </nav>
     </div>
     <div class="card">
-      <h1 class="title">Edit a recipe:</h1>
-      <div class="button">
-        <a href="/"><i class="link">Back to Home</i></a>
-      </div>
-
+      <h1 class="title">Edit recipe:</h1>
       <form action="" enctype="multipart/form-data" method="POST">
         {% csrf_token %} {{ form.as_p }}
         <input type="submit" value="Save changes" />

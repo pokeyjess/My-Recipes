@@ -73,7 +73,7 @@ def signup_view(request):
             if form.is_valid():
                 data = form.cleaned_data
                 new_user = User.objects.create_user(username=data.get("username"), password=data.get("password"))
-                return HttpResponseRedirect(reverse("homepage"))
+                return HttpResponseRedirect(reverse("homepage"))  
         form = SignUpForm()
         return render(request, "generic_form.html", {"form": form})
     else:

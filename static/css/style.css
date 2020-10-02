@@ -25,19 +25,7 @@ body {
   background-size: cover;
   min-height: 200px;
 }
-.button a .link {
-  position: absolute;
-  left: 75%;
-  bottom: 55.7%;
-  background: #17bebb;
-  color: rgb(247, 238, 238);
-  font-size: 0.5em;
-  font-weight: bold;
-  text-align: center;
-  padding: 15px;
-  border-radius: 50%;
-  box-shadow: 1px 1px 10px 1px #19c5c2;
-}
+
 .title {
   color: black;
   display: block;
@@ -46,6 +34,7 @@ body {
   text-transform: uppercase;
   margin: 10px 25px;
 }
+
 .summary {
   color: #969090;
   margin: 0 30px;
@@ -55,6 +44,18 @@ body {
 }
 .info {
   margin: 10px 30px;
+}
+
+a {
+  color: rgb(247, 238, 238);
+  padding: 2%;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 35px;
+  justify-content: center;
+  background-color: rgb(97, 0, 97);
 }
 a.bar {
   display: block;

@@ -10,13 +10,13 @@ def index(request):
     categories = Category.objects.all()
     return render(request, "index.html", {"categories": categories })
 
-@login_required
+# @login_required
 def category(request, category_id):
     category_info = Category.objects.filter(id=category_id).first()
     recipe_list = Recipe.objects.filter(category=category_info)
     return render(request, "category.html", {"category": category_info, "recipes": recipe_list})
 
-@login_required
+# @login_required
 def recipe(request, recipe_id):
     my_recipe = Recipe.objects.filter(id=recipe_id).first()
     return render(request, "recipe.html", {"recipe": my_recipe})
@@ -94,7 +94,23 @@ def recipe_edit(request, id):
         return render(request, 'edit_recipe.html', {'form': form})
     else:
         return HttpResponseForbidden("You must have admin privileges to access this page")
-    
+
+@login_required
+def category_edit(request, id):
+    if request.user.is_staff:
+        edit = get_object_or_404(Category, id=id)
+        if request.method == "POST":
+            form = CategoryForm(request.POST, request.FILES, instance=edit)
+            if form.is_valid():
+                edit = form.save(commit=False)
+                edit.save()
+                return redirect('category', edit.pk)
+        else:
+            form = CategoryForm(instance=edit)
+        return render(request, 'category_form.html', {'form': form})
+    else:
+        return HttpResponseForbidden("You must have admin privileges to access this page")
+   
 @login_required
 def remove_recipe(request, id):
     if request.user.is_staff:

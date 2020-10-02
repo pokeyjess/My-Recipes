@@ -7,8 +7,6 @@ from homepage import views
 
 urlpatterns = [
     path('', views.index, name="homepage"),
-    path('category/<int:category_id>/', views.category),
-    path('recipe/<int:recipe_id>/', views.recipe, name="recipe"),
     path('newrecipe/', views.recipe_form_view, name="newrecipe"),
     path('newcategory/', views.category_form_view, name="newcategory"),
     path('login/', views.login_view, name="loginview"),
@@ -16,7 +14,10 @@ urlpatterns = [
     path('signup/', views.signup_view, name="signupview"),
     path('recipe/<int:id>/edit/', views.recipe_edit, name='recipe_edit'),
     path('recipe/<int:id>/remove/', views.remove_recipe, name='remove_recipe'),
+    path('recipe/<int:recipe_id>/', views.recipe, name="recipe"),
     path('category/<int:id>/remove/', views.remove_category, name='remove_category'),
+    path('category/<int:category_id>/', views.category, name='category'),
+    path('category/<int:id>/edit/', views.category_edit, name='category_edit'),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:

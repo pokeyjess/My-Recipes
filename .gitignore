@@ -49,5 +49,8 @@ ENV/
 # database
 *.sqlite3
 
+# photos etc.
+media
+
 # secret key
 secret_key.py

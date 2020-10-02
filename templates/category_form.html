@@ -6,20 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add a category</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script
+      src="https://kit.fontawesome.com/4457f4abf2.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
+    <div>
+      <nav>
+        <a
+          href="javascript:history.go(-1)"
+          class="fas fa-angle-double-left"
+        ></a>
+        <a href="/">Home</a>
+        {% if request.user.is_authenticated %}
+        <a href="/logout/">Log Out</a>
+        {% else %}
+        <a href="/login/">Log In</a>
+        {% endif %}
+      </nav>
+    </div>
     <div class="card">
-      <h1 class="title">Submit a new category:</h1>
+      <h1 class="title">Submit or edit category:</h1>
 
       <form action="/newcategory/" method="post">
         {% csrf_token %} {{ form.as_p }}
         <input type="submit" value="Submit!" />
       </form>
-    </div>
-    <div class="title">
-      <button>
-        <a class="bar" href="/newrecipe/">Back to adding a new recipe</a>
-      </button>
     </div>
   </body>
 </html>

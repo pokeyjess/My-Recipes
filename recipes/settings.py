@@ -135,13 +135,34 @@ SESSION_COOKIE_SECURE = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    '/var/www/static/',
-]
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# https://stackoverflow.com/questions/28199062/after-collectstatic-no-css-for-admin-page
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_ROOT = "/var/www/static/"
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+    # BASE_DIR / "static",
+    # '/var/www/static/',
+# ]
+# STATICFILES_DIRS = (
+    # os.path.join(PROJECT_ROOT, 'static'),
+# )
 LOGIN_URL = "/login/"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())

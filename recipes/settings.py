@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import sys 
 
-ADMINS = [('Jess', 'pokeyjess72@gmail.com')]
+ADMINS = [('pokey', 'pokeyjess72@gmail.com')]
 MANAGERS = ADMINS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,7 +38,7 @@ SECRET_KEY = find_or_create_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['peaceful-basin-75435.herokuapp.com/']
 
 # Application definition
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,9 +129,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -147,7 +148,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 # STATIC_ROOT = "/var/www/static/"
 # STATIC_URL = '/static/'
@@ -161,7 +162,8 @@ STATICFILES_DIRS = (
 LOGIN_URL = "/login/"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, "live-static-files", "media-root")
 
 # Configure Django App for Heroku.
 import django_heroku

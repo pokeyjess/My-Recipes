@@ -19,6 +19,6 @@ urlpatterns = [
     path('category/<int:category_id>/', views.category, name='category'),
     path('category/<int:id>/edit/', views.category_edit, name='category_edit'),
     path('admin/', admin.site.urls),
-]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+    # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

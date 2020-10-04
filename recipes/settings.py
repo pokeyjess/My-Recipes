@@ -40,7 +40,7 @@ SECRET_KEY = find_or_create_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['peaceful-basin-75435.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -153,7 +153,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 LOGIN_URL = "/login/"
 

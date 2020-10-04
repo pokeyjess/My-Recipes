@@ -161,9 +161,15 @@ MEDIA_URL = '/media/'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-
 MEDIA_ROOT = os.path.join(BASE_DIR, STATIC_ROOT, 'media')
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
 
+'''
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hoiomsa7b',
+    'API_KEY': '298816973249399',
+    'API_SECRET': 'TB3nWo0kI1mcMBffm1EVFuf_jkY',
+}
+'''

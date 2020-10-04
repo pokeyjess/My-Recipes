@@ -1,8 +1,8 @@
 from pathlib import Path
 import os
 import sys 
-import cloudinary
-import cloudinary_storage
+# import cloudinary
+# import cloudinary_storage
 
 ADMINS = [('pokey', 'pokeyjess72@gmail.com')]
 MANAGERS = ADMINS
@@ -158,56 +158,12 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 LOGIN_URL = "/login/"
 
 MEDIA_URL = '/media/'
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-CLOUDINARY = {
-  'cloud_name': 'hoiomsa7b',  
-  'api_key': '298816973249399',  
-  'api_secret': 'TB3nWo0kI1mcMBffm1EVFuf_jkY',  
-}
 
 MEDIA_ROOT = os.path.join(BASE_DIR, STATIC_ROOT, 'media')
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
 
-'''
-# name: hoiomsa7b
-# key: 298816973249399
-# secret: TB3nWo0kI1mcMBffm1EVFuf_jkY
-
-# Cloudinary settings for Django. Add to your settings file.
-CLOUDINARY = {
-  'cloud_name': 'hoiomsa7b',  
-  'api_key': '298816973249399',  
-  'api_secret': 'TB3nWo0kI1mcMBffm1EVFuf_jkY',  
-}
-
-# Cloudinary settings using environment variables. Add to your .bashrc
-export CLOUDINARY_CLOUD_NAME="hoiomsa7b"  
-export CLOUDINARY_API_KEY="298816973249399"  
-export CLOUDINARY_API_SECRET="TB3nWo0kI1mcMBffm1EVFuf_jkY"  
-
-# Cloudinary settings using python code. Run before pycloudinary is used.
-import cloudinary
-cloudinary.config(
-  cloud_name = 'hoiomsa7b',  
-  api_key = '298816973249399',  
-  api_secret = 'TB3nWo0kI1mcMBffm1EVFuf_jkY'  
-)
-
-# other ideas:
-
-cloudinary.config(
-  cloud_name = os.environ.get('hoiomsa7b'),
-  api_key = os.environ.get('298816973249399'),
-  api_secret = os.environ.get('TB3nWo0kI1mcMBffm1EVFuf_jkY'),
-  secure = True
-)
-# set environment variales
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'CLOUDINARY_CLOUD_NAME',
-    'API_KEY': 'CLOUDINARY_API_KEY',
-    'API_SECRET': 'CLOUDINARY_API_SECRET',
-}
-'''

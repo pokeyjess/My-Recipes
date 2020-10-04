@@ -29,7 +29,7 @@ class Recipe(models.Model):
     summary = models.TextField()
     instructions = models.TextField()
     # recipe_image = models.ImageField(upload_to='images/', null=True, blank=True)
-    recipe_image = CloudinaryField('image', null=True, blank=True, default="default_photo3.jpg")
+    recipe_image = CloudinaryField('image', null=True, blank=True)
 
 
     class Meta:

@@ -29,9 +29,6 @@
     </div>
     <div class="card">
       <h1 class="title">Submit a new recipe:</h1>
-      <div class="button">
-        <a href="/"><i class="link">Back to Home</i></a>
-      </div>
       <form action="/newrecipe/" enctype="multipart/form-data" method="post">
         {% csrf_token %} {{ form.as_p }}
         <input type="submit" value="Submit!" />

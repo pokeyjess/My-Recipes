@@ -17,11 +17,7 @@ urlpatterns = [
     path('recipe/<int:recipe_id>/', views.recipe, name="recipe"),
     path('category/<int:id>/remove/', views.remove_category, name='remove_category'),
     path('category/<int:category_id>/', views.category, name='category'),
-    path('category/<int:id>/edit/', views.category_edit, name='category_edit'),
     path('admin/', admin.site.urls),
 ] 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# if settings.DEBUG:
-    # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -54,3 +54,6 @@ media
 
 # secret key
 secret_key.py
+
+# problem with the error?
+lib64/

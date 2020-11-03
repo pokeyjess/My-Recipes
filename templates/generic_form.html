@@ -28,15 +28,12 @@
     </div>
     <br />
     <br />
-    {% if request.user.is_staff %}
-    <div class="title">
-      <h3>Sign up a new user</h3>
-    </div>
-    {% else %}
+    
+   
     <div class="title">
       <h3>Please sign in</h3>
     </div>
-    {% endif %}
+   
     <div class="card">
       <form action="" method="post">
         {% csrf_token %} {{ form.as_p }}

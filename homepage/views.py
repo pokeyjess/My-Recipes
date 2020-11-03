@@ -28,8 +28,8 @@ def recipe_form_view(request):
             form = RecipeForm(request.POST, request.FILES)
             if form.is_valid():
                 data = form.cleaned_data
-                Recipe.objects.create(title=data.get('title'), category=data.get('category'), summary=data.get('summary'), instructions=data.get('instructions'), recipe_image=data.get('recipe_image'))
-                return HttpResponseRedirect(reverse("homepage"))
+                new_recipe = Recipe.objects.create(title=data.get('title'), category=data.get('category'), summary=data.get('summary'), instructions=data.get('instructions'), recipe_image=data.get('recipe_image'))
+                return redirect('recipe', new_recipe.pk)
         form = RecipeForm()
         return render(request, "recipe_form.html", {"form": form})
     else:
@@ -92,22 +92,6 @@ def recipe_edit(request, id):
         else:
             form = RecipeForm(instance=edit)
         return render(request, 'edit_recipe.html', {'form': form})
-    else:
-        return HttpResponseForbidden("You must have admin privileges to access this page")
-
-@login_required
-def category_edit(request, id):
-    if request.user.is_staff:
-        edit = get_object_or_404(Category, id=id)
-        if request.method == "POST":
-            form = CategoryForm(request.POST, request.FILES, instance=edit)
-            if form.is_valid():
-                edit = form.save(commit=False)
-                edit.save()
-                return redirect('category', edit.pk)
-        else:
-            form = CategoryForm(instance=edit)
-        return render(request, 'category_form.html', {'form': form})
     else:
         return HttpResponseForbidden("You must have admin privileges to access this page")
    
